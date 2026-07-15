@@ -230,6 +230,40 @@ The important unknowns are empirical:
 - Is generic QMK debounce masking analog scan instability, or just adding
   unnecessary latency after an already stable capsense result?
 
+## Bottom-Case Clearance And Insulation
+
+Photos of Leyden Jar controller installations commonly show Kapton tape over
+the controller underside.  That suggests the bottom case may be close enough
+to make clearance or electrical isolation a real installation concern.  The
+board has through-hole solder joints on that face, so Kapton should be treated
+as electrical insulation, not as a durable rubbing or load-bearing surface:
+over time, solder points could abrade or puncture it if the board moves against
+the case.
+
+Before designing a replacement, measure the installed clearance and contact
+pattern with Plastigage (or an equivalent crush/witness material), including
+the highest through-hole solder joints and the likely case features beneath
+them.  Measure with the board fully mounted and the case bolts tightened to
+normal service condition; a loose dry-fit will not show the actual geometry.
+
+A printed guard is worth considering only after those measurements establish
+the available space.  Its design goals should be:
+
+- Keep all solder joints clear of the case with margin for tolerances and case
+  flex.
+- Put any intentional contact on broad, smooth guard features rather than
+  solder points or tape.
+- Locate positively from existing board/case geometry so it cannot migrate and
+  chafe.
+- Avoid conductive fasteners or features near exposed joints.
+- Retain a thin electrical-insulation layer where appropriate; a rigid guard
+  controls mechanics, while insulation covers an unexpected contact.
+
+This is a mechanical reliability experiment, separate from the capacitive
+scan work.  Record the measured minimum clearance, the compressed-material
+locations, and whether the board can move relative to the case before deciding
+on a printed part.
+
 ## Backup Approach: Adjacent-Bucket Hysteresis
 
 The current design already scans several ordered thresholds. That can be used
